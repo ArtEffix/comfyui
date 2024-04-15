@@ -75,9 +75,8 @@
           "upscale_models": "app/models/upscale_models",
           "vae": "app/models/vae"
         },
-        "peers": [
-          "https://github.com/cocktailpeanutlabs/automatic1111.git",
-          "https://github.com/cocktailpeanutlabs/fooocus.git"
+        peers: [
+          "https://github.com/ArtEffix/stable-diffusion-webui-forge.git"
         ]
       }
     },
@@ -92,14 +91,14 @@
     {
       "method": "fs.download",
       "params": {
-        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors?download=true",
         "dir": "app/models/checkpoints"
       }
     },
     {
       "method": "fs.download",
       "params": {
-        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors?download=true",
         "dir": "app/models/checkpoints"
       }
     },
