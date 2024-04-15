@@ -13,7 +13,7 @@
   },
   "run": [
     {
-      "method": "shell.run",
+      "method": "shell.execute",
       "params": {
         "venv": "env",
         "path": "app",
