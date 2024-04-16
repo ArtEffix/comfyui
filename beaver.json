@@ -1,9 +1,0 @@
-{
-  "title": "ComfyUI",
-  "description": "The most powerful and modular stable diffusion GUI and backend.",
-  "icon": "icon.png",
-  "install": "install.json",
-  "unInstall": "uninstall.json",
-  "start": "start.json",
-  "update": "update.json"
-}
