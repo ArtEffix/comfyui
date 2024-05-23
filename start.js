@@ -23,7 +23,7 @@ module.exports = {
                 },
                 "on": [
                     {
-                        "event": "/http:\/\/[0-9.:]+/",
+                        "event": "comfyui:start",
                         "done": true
                     }
                 ]
