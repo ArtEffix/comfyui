@@ -25,6 +25,17 @@ module.exports = {
         {
             "method": "shell.run",
             "params": {
+                "message": "git pull",
+                "on": [
+                    {
+                        "event": "comfyui:install"
+                    }
+                ]
+            }
+        },
+        {
+            "method": "shell.run",
+            "params": {
                 "message": "pwd",
                 "on": [
                     {
