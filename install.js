@@ -25,36 +25,36 @@ module.exports = {
         {
             "method": "shell.run",
             "params": {
-                "message": "pwd"
-            },
-            "on": [
-                {
-                    "event": "comfyui:install",
-                }
-            ]
+                "message": "pwd",
+                "on": [
+                    {
+                        "event": "comfyui:install",
+                    }
+                ]
+            }
         },
         {
             "method": "shell.run",
             "params": {
-                "message": "git clone https://github.com/comfyanonymous/ComfyUI.git app"
-            },
-            "on": [
-                {
-                    "event": "comfyui:install",
-                }
-            ]
+                "message": "git clone https://github.com/comfyanonymous/ComfyUI.git app",
+                "on": [
+                    {
+                        "event": "comfyui:install",
+                    }
+                ]
+            }
         },
         {
             "method": "shell.run",
             "params": {
                 "message": "git clone https://github.com/ltdrdata/ComfyUI-Manager",
-                "path": "app/custom_nodes"
-            },
-            "on": [
-                {
-                    "event": "comfyui:install",
-                }
-            ]
+                "path": "app/custom_nodes",
+                "on": [
+                    {
+                        "event": "comfyui:install",
+                    }
+                ]
+            }
         },
         {
             "method": "shell.run",
@@ -71,24 +71,24 @@ module.exports = {
                     result.push('pip install -r requirements.txt');
 
                     return result;
-                }
-            },
-            "on": [
-                {
-                    "event": "comfyui:install",
-                }
-            ]
+                },
+                "on": [
+                    {
+                        "event": "comfyui:install",
+                    }
+                ]
+            }
         },
         {
             "method": "shell.run",
             "params": {
-                "message": "mkdir workflows"
-            },
-            "on": [
-                {
-                    "event": "comfyui:install",
-                }
-            ]
+                "message": "mkdir workflows",
+                "on": [
+                    {
+                        "event": "comfyui:install",
+                    }
+                ]
+            }
         },
         {
             "method": "shell.run",
@@ -97,13 +97,13 @@ module.exports = {
                     "git clone https://github.com/comfyanonymous/ComfyUI_examples",
                     "git clone https://github.com/cocktailpeanut/comfymp4"
                 ],
-                "path": "workflows"
-            },
-            "on": [
-                {
-                    "event": "comfyui:install",
-                }
-            ]
+                "path": "workflows",
+                "on": [
+                    {
+                        "event": "comfyui:install",
+                    }
+                ]
+            }
         },
         {
             "method": "fs.share",
