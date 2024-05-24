@@ -146,11 +146,5 @@ module.exports = {
         //         "dir": "app/models/checkpoints"
         //     }
         // },
-        {
-            "method": "notify",
-            "params": {
-                "html": "Click the 'Start' tab to get started!"
-            }
-        }
     ]
 }
