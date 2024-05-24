@@ -24,7 +24,6 @@ module.exports = {
                 "on": [
                     {
                         "event": "comfyui:start",
-                        "done": true
                     }
                 ]
             }

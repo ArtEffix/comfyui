@@ -6,7 +6,4 @@ module.exports = {
   unInstall: "uninstall.json",
   start: "start.js",
   update: "update.json",
-  isInstalled: function (ctx) {
-    return ctx.absPath('app', 'env');
-  },
 }

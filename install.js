@@ -26,20 +26,35 @@ module.exports = {
             "method": "shell.run",
             "params": {
                 "message": "pwd"
-            }
+            },
+            "on": [
+                {
+                    "event": "comfyui:install",
+                }
+            ]
         },
         {
             "method": "shell.run",
             "params": {
                 "message": "git clone https://github.com/comfyanonymous/ComfyUI.git app"
-            }
+            },
+            "on": [
+                {
+                    "event": "comfyui:install",
+                }
+            ]
         },
         {
             "method": "shell.run",
             "params": {
                 "message": "git clone https://github.com/ltdrdata/ComfyUI-Manager",
                 "path": "app/custom_nodes"
-            }
+            },
+            "on": [
+                {
+                    "event": "comfyui:install",
+                }
+            ]
         },
         {
             "method": "shell.run",
@@ -57,13 +72,23 @@ module.exports = {
 
                     return result;
                 }
-            }
+            },
+            "on": [
+                {
+                    "event": "comfyui:install",
+                }
+            ]
         },
         {
             "method": "shell.run",
             "params": {
                 "message": "mkdir workflows"
-            }
+            },
+            "on": [
+                {
+                    "event": "comfyui:install",
+                }
+            ]
         },
         {
             "method": "shell.run",
@@ -73,7 +98,12 @@ module.exports = {
                     "git clone https://github.com/cocktailpeanut/comfymp4"
                 ],
                 "path": "workflows"
-            }
+            },
+            "on": [
+                {
+                    "event": "comfyui:install",
+                }
+            ]
         },
         {
             "method": "fs.share",
