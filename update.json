@@ -3,48 +3,28 @@
     {
       "method": "shell.run",
       "params": {
-        "message": "git pull",
-        "on": [
-          {
-            "event": "comfyui:update"
-          }
-        ]
+        "message": "git pull"
       }
     },
     {
       "method": "shell.run",
       "params": {
         "message": "git pull",
-        "path": "app",
-        "on": [
-          {
-            "event": "comfyui:update"
-          }
-        ]
+        "path": "app"
       }
     },
     {
       "method": "shell.run",
       "params": {
         "message": "git pull",
-        "path": "app/custom_nodes/ComfyUI-Manager",
-        "on": [
-          {
-            "event": "comfyui:update"
-          }
-        ]
+        "path": "app/custom_nodes/ComfyUI-Manager"
       }
     },
     {
       "method": "shell.run",
       "params": {
         "message": "git pull",
-        "path": "workflows/ComfyUI_examples",
-        "on": [
-          {
-            "event": "comfyui:update"
-          }
-        ]
+        "path": "workflows/ComfyUI_examples"
       }
     }
   ]

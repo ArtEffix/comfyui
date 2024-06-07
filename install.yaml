@@ -1,0 +1,71 @@
+name: comfyui install
+
+requires:
+  - 'ffmpeg'
+
+jobs:
+  install:
+    steps:
+      - name: git pull app
+        use: actions/git
+        with:
+          type: clone
+          url: https://github.com/comfyanonymous/ComfyUI.git
+          dir: app
+
+      - name: git pull ComfyUI-Manager
+        use: actions/git
+        with:
+          type: clone
+          url: https://github.com/ltdrdata/ComfyUI-Manager
+          dir: app/custom_nodes
+
+      - name: shell run ls
+        use: action/shell
+        with:
+          path: app
+          cmd: ls
+
+      - name: conda shell run
+        use: action/shell-conda
+        if: matrix.os == 'macos-latest'
+        with:
+          venv: env
+          path: app
+          cmd: pip install -r requirements.txt
+
+      - name: mkdir workflows
+        #    默认使用 action/shell
+        run: mkdir workflows
+        with:
+          path: app
+
+      - name: clone ComfyUI_examples comfymp4
+        run: action/shell-conda
+        with:
+          path: app/workflows
+          run:
+            - git clone https://github.com/comfyanonymous/ComfyUI_examples
+            - git clone https://github.com/cocktailpeanut/comfymp4
+
+      - name: drive
+        run: action/drive
+        with:
+          uri: https://github.com/comfyanonymous/ComfyUI.git
+          ln:
+            checkpoints: app/models/checkpoints
+            clip: app/models/clip
+            clip_vision: app/models/clip_vision
+            configs: app/models/configs
+            controlnet: app/models/controlnet
+            embeddings: app/models/embeddings
+            loras: app/models/loras
+            upscale_models: app/models/upscale_models
+            vae: app/models/vae
+          peers:
+            - https://github.com/ArtEffix/stable-diffusion-webui-forge.git
+      - name: ln
+        run: action/drive
+        with:
+          ln:
+            output: app/output
