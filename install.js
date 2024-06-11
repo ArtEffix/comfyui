@@ -1,8 +1,8 @@
 const cmds = {
     "win32": {
         "nvidia": "pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
-        "amd": "pip install torch-directml",
-        "cpu": "pip install torch torchvision torchaudio"
+        "amd": "pip install torch-directml --index-url https://download.pytorch.org/whl/cu12",
+        "cpu": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu12"
     },
     "darwin": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
     "linux": {
