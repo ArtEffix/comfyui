@@ -59,7 +59,7 @@ module.exports = {
                     }
 
                     result.push((platform === 'darwin' ? cmds.darwin : (['nvidia', 'amd'].includes(gpu) ? cmds[platform][gpu] : cmds[platform].cpu)));
-                    result.push('pip install -r requirements.txt');
+                    result.push('pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple');
 
                     return result;
                 }
