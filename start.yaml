@@ -1,0 +1,24 @@
+name: comfyui start
+path: apps/comfyui
+jobs:
+  install:
+    global:
+      start:
+        darwin:
+          apple: python main.py --force-fp16
+          cpu: python main.py --force-fp16
+        win32:
+          nvidia: python main.py --disable-xformers
+          amd: python main.py --directml
+          cpu: python main.py --cpu
+        linux:
+          nvidia: python main.py --disable-xformers
+          amd: python main.py --disable-xformers
+          cpu: python main.py --cpu
+    steps:
+      - name: starting
+        uses: action/shell-conda
+        with:
+          venv: env
+          path: app
+          run: "{{global.start[os.platform][os.gpu]}}"

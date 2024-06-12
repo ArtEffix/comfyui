@@ -1,47 +1,59 @@
 name: comfyui install
-
-requires:
-  - 'ffmpeg'
-
+path: apps/comfyui
 jobs:
   install:
+    global:
+      install:
+        darwin:
+          apple: pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+          cpu: pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+        win32:
+          nvidia: pip3 install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121
+          amd: pip3 install torch-directml --index-url https://download.pytorch.org/whl/cu12
+          cpu: pip3 install torch torchvision torchaudio -i https://pypi.tuna.tsinghua.edu.cn/simple
+        linux:
+          nvidia: pip3 install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121
+          amd: pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7
+          cpu: pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
     steps:
       - name: git pull app
-        use: actions/git
+        uses: actions/git
         with:
           type: clone
           url: https://github.com/comfyanonymous/ComfyUI.git
           dir: app
 
       - name: git pull ComfyUI-Manager
-        use: actions/git
+        uses: actions/git
         with:
           type: clone
           url: https://github.com/ltdrdata/ComfyUI-Manager
-          dir: app/custom_nodes
+          dir: app/custom_nodes/ComfyUI-Manager
 
-      - name: shell run ls
-        use: action/shell
-        with:
-          path: app
-          cmd: ls
-
-      - name: conda shell run
-        use: action/shell-conda
-        if: matrix.os == 'macos-latest'
+      - name: install cuda-12.1.0
+        uses: action/shell-conda
+        if: "{{os.gpu == 'nvidia'}}"
         with:
           venv: env
           path: app
-          cmd: pip install -r requirements.txt
+          run: conda install -y nvidia/label/cuda-12.1.0::cuda
+
+      - name: install requirements
+        uses: action/shell-conda
+        with:
+          venv: env
+          path: app
+          run:
+            - "{{global.install[os.platform][os.gpu]}}"
+            - pip install -r requirements.txt  -i https://pypi.tuna.tsinghua.edu.cn/simple
 
       - name: mkdir workflows
-        #    默认使用 action/shell
         run: mkdir workflows
         with:
           path: app
 
       - name: clone ComfyUI_examples comfymp4
-        run: action/shell-conda
+        uses: action/shell-conda
         with:
           path: app/workflows
           run:
@@ -49,7 +61,7 @@ jobs:
             - git clone https://github.com/cocktailpeanut/comfymp4
 
       - name: drive
-        run: action/drive
+        uses: action/drive
         with:
           uri: https://github.com/comfyanonymous/ComfyUI.git
           ln:
@@ -65,7 +77,7 @@ jobs:
           peers:
             - https://github.com/ArtEffix/stable-diffusion-webui-forge.git
       - name: ln
-        run: action/drive
+        uses: action/drive
         with:
           ln:
             output: app/output

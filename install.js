@@ -1,14 +1,14 @@
 const cmds = {
     "win32": {
-        "nvidia": "pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
-        "amd": "pip install torch-directml --index-url https://download.pytorch.org/whl/cu12",
-        "cpu": "pip install torch torchvision torchaudio -i https://pypi.tuna.tsinghua.edu.cn/simple"
+        "nvidia": "pip3 install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
+        "amd": "pip3 install torch-directml --index-url https://download.pytorch.org/whl/cu12",
+        "cpu": "pip3 install torch torchvision torchaudio -i https://pypi.tuna.tsinghua.edu.cn/simple"
     },
     "darwin": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
     "linux": {
-        "nvidia": "pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
-        "amd": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7",
-        "cpu": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
+        "nvidia": "pip3 install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
+        "amd": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7",
+        "cpu": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
     }
 }
 
@@ -26,12 +26,6 @@ module.exports = {
             "method": "shell.run",
             "params": {
                 "message": "git pull"
-            }
-        },
-        {
-            "method": "shell.run",
-            "params": {
-                "message": "pwd"
             }
         },
         {
